@@ -1,0 +1,5 @@
+runs:
+  using: 'shell'
+  command: | 
+    brew install openssl gnu-getopt coreutils gflags protobuf leveldb
+    
