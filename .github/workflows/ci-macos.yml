@@ -2,7 +2,7 @@ name: Build on Macos
 
 on:
   push:
-    branches: [ master ]
+    branches: "**"
   pull_request:
     branches: [ master ]
 
@@ -15,11 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: install dependences
-      run: |
-           brew install openssl gnu-getopt coreutils gflags protobuf leveldb
-
+    - uses: ./.github/actions/install-brew-dependences
     - name: config_brpc
       run: |
            GETOPT_PATH=$(find "/usr/local/Cellar/" -name "getopt" -type f -perm +111 -exec dirname {} \;)
@@ -35,10 +31,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: install dependences
-      run: |
-           brew install openssl gnu-getopt coreutils gflags protobuf leveldb
+    - uses: ./.github/actions/install-brew-dependences
 
     - name: cmake
       run: |
