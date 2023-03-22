@@ -15,8 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    with:
-      ref: RefactorDependencies
+      with:
+        ref: RefactorDependencies
     - name: Echo ls command
       run: |
            set -x
