@@ -15,8 +15,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Echo ls command
+      run: |
+           set -x
+           ls ./
     - uses: ./.github/actions/install-brew-dependences
-    
+
     - name: config_brpc
       run: |
            GETOPT_PATH=$(find "/usr/local/Cellar/" -name "getopt" -type f -perm +111 -exec dirname {} \;)
