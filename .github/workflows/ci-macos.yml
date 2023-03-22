@@ -18,6 +18,7 @@ jobs:
     - name: Echo ls command
       run: |
            set -x
+           pwd
            ls ./
     - uses: ./.github/actions/install-brew-dependences
 
