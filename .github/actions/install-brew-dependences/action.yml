@@ -1,5 +1,5 @@
 runs:
-  using: 'shell'
-  command: | 
-    brew install openssl gnu-getopt coreutils gflags protobuf leveldb
+  using: 'composite'
+  steps:
+    - run: brew install openssl gnu-getopt coreutils gflags protobuf leveldb
     
