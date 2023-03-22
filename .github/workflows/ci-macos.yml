@@ -19,7 +19,7 @@ jobs:
       run: |
            set -x
            pwd
-           ls ./
+           ls .github/
     - uses: ./.github/actions/install-brew-dependences
 
     - name: config_brpc
