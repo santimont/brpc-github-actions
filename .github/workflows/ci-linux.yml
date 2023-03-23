@@ -27,12 +27,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/install-essential-dependences
-    - name: cmake 
-      run: |
-           export CC=gcc && export CXX=g++
-           mkdir build
-           cd build
-           cmake ..
+    - uses: ./.github/actions/execute-cmake
+      with:
+        compiler_variables: |
+                           CC=gcc
+                           CXX=g++
     - name: compile
       run: |
            cd build
@@ -68,12 +67,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/install-all-dependences
-    - name: cmake 
-      run: |
-           export CC=gcc && export CXX=g++
-           mkdir build
-           cd build
-           cmake -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON ..
+    - uses: ./.github/actions/execute-cmake
+      with:
+        compiler_variables: |
+                           CC=gcc
+                           CXX=g++
+        options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
     - name: compile
       run: |
            cd build
@@ -110,12 +109,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/install-essential-dependences
-    - name: cmake 
-      run: |
-           export CC=clang && export CXX=clang++
-           mkdir build
-           cd build
-           cmake ..
+    - uses: ./.github/actions/execute-cmake
+      with:
+        compiler_variables: |
+                           CC=clang
+                           CXX=clang++
     - name: compile
       run: |
            cd build
@@ -151,12 +149,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/install-all-dependences
-    - name: cmake 
-      run: |
-           export CC=clang && export CXX=clang++
-           mkdir build
-           cd build
-           cmake -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON ..
+    - uses: ./.github/actions/execute-cmake
+      with:
+        compiler_variables: |
+                           CC=clang
+                           CXX=clang++
+        options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
     - name: compile
       run: |
            cd build

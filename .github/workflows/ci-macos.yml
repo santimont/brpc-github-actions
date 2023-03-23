@@ -32,11 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/install-brew-dependences
-    - name: cmake
-      run: |
-           mkdir build
-           cd build
-           cmake ..
+    - uses: ./.github/actions/execute-cmake
 
     - name: compile
       run: |

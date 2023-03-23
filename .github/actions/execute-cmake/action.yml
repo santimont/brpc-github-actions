@@ -1,0 +1,24 @@
+inputs:
+  compiler_variables:
+    description: list of variables to indicate compiler
+    required: false
+  options:
+    description: extra options for to run cmake with
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+  - name: Set the Environment Variables
+    run: |
+        for env_variable in ${{inputs.compiler_variables}}; do
+          export "$env_variable"
+        done
+    shell: bash
+
+  - name: Execute the CMake Instructions
+    run: |
+        mkdir build
+        cd build
+        cmake ${{inputs.options}} ..
+  
