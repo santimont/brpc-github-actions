@@ -9,8 +9,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: Echo the variables
+    run: echo ${{inputs.compiler_variables}}
   - name: Set the Environment Variables
-    run: |
+    run: | 
         for env_variable in ${{inputs.compiler_variables}}; do
           export $env_variable
         done
