@@ -39,10 +39,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: install dependences
-      run: |
-           sudo apt-get update
-           sudo apt-get install libibverbs-dev
+    - uses: ./.github/actions/install-bazel-dependences
     - name: compile
       run: |
            export CC=gcc && export CXX=g++
@@ -79,9 +76,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependences
-      run: |
-           sudo apt-get update
-           sudo apt-get install libibverbs-dev
+    - uses: ./.github/actions/install-bazel-dependences
     - name: compile
       run: |
            export CC=gcc && export CXX=g++
@@ -117,10 +112,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: install dependences
-      run: |
-           sudo apt-get update
-           sudo apt-get install libibverbs-dev
+    - uses: ./.github/actions/install-bazel-dependences
     - name: compile
       run: |
            export CC=clang && export CXX=clang++
@@ -156,10 +148,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: install dependences
-      run: |
-           sudo apt-get update
-           sudo apt-get install libibverbs-dev
+    - uses: ./.github/actions/install-bazel-dependences
     - name: compile
       run: |
            export CC=clang && export CXX=clang++
