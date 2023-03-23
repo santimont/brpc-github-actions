@@ -37,10 +37,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/dependences/install-bazel-dependences
-    - name: compile
-      run: |
-           export CC=gcc && export CXX=g++
-           bazel build -j ${{env.proc_num}} -c opt --copt -DHAVE_ZLIB=1 //...
+    - uses: ./.github/actions/build-bazel
+      with:
+        compiler: gcc
 
   gcc-compile-with-make-all-options:
     runs-on: ubuntu-20.04
@@ -70,10 +69,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/dependences/install-bazel-dependences
-    - name: compile
-      run: |
-           export CC=gcc && export CXX=g++
-           bazel build -j 12 -c opt --define with_mesalink=false --define with_glog=true --define with_thrift=true --copt -DHAVE_ZLIB=1 //...
+    - uses: ./.github/actions/build-bazel
+      with:
+        compiler: gcc
+        options: --define with_mesalink=false --define with_glog=true --define with_thrift=true
 
 
   clang-compile-with-make:
@@ -103,10 +102,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/dependences/install-bazel-dependences
-    - name: compile
-      run: |
-           export CC=clang && export CXX=clang++
-           bazel build -j ${{env.proc_num}} -c opt --copt -DHAVE_ZLIB=1 //...
+    - uses: ./.github/actions/build-bazel
+      with:
+        compiler: clang
+
 
   clang-compile-with-make-all-options:
     runs-on: ubuntu-20.04
@@ -136,10 +135,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions/dependences/install-bazel-dependences
-    - name: compile
-      run: |
-           export CC=clang && export CXX=clang++
-           bazel build -j ${{env.proc_num}} -c opt --define with_mesalink=false --define with_glog=true --define with_thrift=true --copt -DHAVE_ZLIB=1 //...
+    - uses: ./.github/actions/build-bazel
+      with:
+        compiler: clang
+        options: --define with_mesalink=false --define with_glog=true --define with_thrift=true
+
 
   clang-unittest:
     runs-on: ubuntu-20.04
