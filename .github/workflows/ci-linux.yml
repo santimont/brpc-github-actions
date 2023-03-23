@@ -18,9 +18,7 @@ jobs:
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=gcc --cxx=g++
-    - name: compile
-      run: |
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
 
   gcc-compile-with-cmake:
     runs-on: ubuntu-20.04
@@ -30,10 +28,9 @@ jobs:
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: gcc
-    - name: compile
-      run: |
-           cd build
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
+      with:
+        directory: build
 
   gcc-compile-with-bazel:
     runs-on: ubuntu-20.04
@@ -53,9 +50,7 @@ jobs:
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=gcc --cxx=g++ --with-thrift --with-glog
-    - name: compile
-      run: |
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
 
   gcc-compile-with-cmake-all-options:
     runs-on: ubuntu-20.04
@@ -66,10 +61,9 @@ jobs:
       with:
         compiler: gcc
         options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
-    - name: compile
-      run: |
-           cd build
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
+      with:
+        directory: build
 
   gcc-compile-with-bazel-all-options:
     runs-on: ubuntu-20.04
@@ -90,9 +84,7 @@ jobs:
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=clang --cxx=clang++
-    - name: compile
-      run: |
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
 
   clang-compile-with-cmake:
     runs-on: ubuntu-20.04
@@ -102,10 +94,9 @@ jobs:
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: clang
-    - name: compile
-      run: |
-           cd build
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
+      with:
+        directory: build
 
   clang-compile-with-bazel:
     runs-on: ubuntu-20.04
@@ -125,9 +116,7 @@ jobs:
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=clang --cxx=clang++ --with-thrift --with-glog
-    - name: compile
-      run: |
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
 
   clang-compile-with-cmake-all-options:
     runs-on: ubuntu-20.04
@@ -138,10 +127,9 @@ jobs:
       with:
         compiler: clang
         options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
-    - name: compile
-      run: |
-           cd build
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
+      with:
+        directory: build
 
   clang-compile-with-bazel-all-options:
     runs-on: ubuntu-20.04
@@ -164,10 +152,9 @@ jobs:
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=clang --cxx=clang++
-    - name: compile tests
-      run: |
-           cd test
-           make -j ${{env.proc_num}}
+    - uses: ./.github/actions/compile
+      with:
+        directory: test
     - name: run tests
       run: |
            cd test
