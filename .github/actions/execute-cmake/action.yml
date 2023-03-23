@@ -12,7 +12,7 @@ runs:
   - name: Set the Environment Variables
     run: |
         for env_variable in ${{inputs.compiler_variables}}; do
-          export "$env_variable"
+          export $env_variable
         done
     shell: bash
 
