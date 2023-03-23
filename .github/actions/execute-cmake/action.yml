@@ -15,6 +15,7 @@ runs:
           echo "Using Clang"
         elif ["$compiler" = "gcc"]; then
           echo "Using GCC"
+        fi
     shell: bash
   - name: Execute the CMake Instructions
     run: |
