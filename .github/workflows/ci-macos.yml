@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-brew-dependences
+    - uses: ./.github/actions/dependences/install-brew-dependences
     - name: config_brpc
       run: |
            GETOPT_PATH=$(find "/usr/local/Cellar/" -name "getopt" -type f -perm +111 -exec dirname {} \;)
@@ -29,7 +29,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-brew-dependences
+    - uses: ./.github/actions/dependences/install-brew-dependences
     - uses: ./.github/actions/execute-cmake
     - uses: ./.github/actions/compile
       with:

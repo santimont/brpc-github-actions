@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-20.04 # https://github.com/actions/runner-images
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-essential-dependences
+    - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=gcc --cxx=g++
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-essential-dependences
+    - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: gcc
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-bazel-dependences
+    - uses: ./.github/actions/dependences/install-bazel-dependences
     - name: compile
       run: |
            export CC=gcc && export CXX=g++
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-all-dependences
+    - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=gcc --cxx=g++ --with-thrift --with-glog
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-all-dependences
+    - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: gcc
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-bazel-dependences
+    - uses: ./.github/actions/dependences/install-bazel-dependences
     - name: compile
       run: |
            export CC=gcc && export CXX=g++
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-essential-dependences
+    - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=clang --cxx=clang++
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-essential-dependences
+    - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: clang
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-bazel-dependences
+    - uses: ./.github/actions/dependences/install-bazel-dependences
     - name: compile
       run: |
            export CC=clang && export CXX=clang++
@@ -112,7 +112,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-all-dependences
+    - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/init-make-config
       with:
         options: --cc=clang --cxx=clang++ --with-thrift --with-glog
@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-all-dependences
+    - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: clang
@@ -135,7 +135,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-bazel-dependences
+    - uses: ./.github/actions/dependences/install-bazel-dependences
     - name: compile
       run: |
            export CC=clang && export CXX=clang++
@@ -145,7 +145,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: ./.github/actions/install-essential-dependences
+    - uses: ./.github/actions/dependences/install-essential-dependences
     - name: install gtest
       run: |
            sudo apt-get install -y cmake libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv lib/libgtest* /usr/lib/
