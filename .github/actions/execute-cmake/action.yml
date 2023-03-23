@@ -4,8 +4,8 @@ inputs:
   compiler:
     description: compiler to run on (either clang or gcc)
     required: false
-  options:
-    description: extra options for to run cmake with
+  extra_options:
+    description: indicates if cmake if compiled with extra options (thrift and clanf)
     required: false
 runs:
   using: "composite"
@@ -17,8 +17,14 @@ runs:
         elif [ "${{inputs.compiler}}" = "gcc" ]; then
           export CC=gcc && export CXX=g++
         fi
+
         mkdir build
         cd build
-        cmake ${{inputs.options}} ..
+
+        if [ "${{inputs.extra_options}}" = "true" ]; then
+          cmake -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON ..
+        else
+          cmake ..
+        fi
     shell: bash
   

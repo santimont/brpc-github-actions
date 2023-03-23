@@ -4,8 +4,8 @@ inputs:
   compiler:
     description: compiler to run on (either clang or gcc)
     required: false
-  options:
-    description: extra options for to run the bazel with
+  extra_options:
+    description: indicates if we run with extra options or not (disable mesalink and enable glog, thrift)
     required: false
 runs:
   using: "composite"
@@ -18,6 +18,9 @@ runs:
           export CC=gcc && export CXX=g++
         fi
 
-        bazel build -j ${{env.proc_num}} -c opt --copt -DHAVE_ZLIB=1 ${{inputs.options}} //...
-        
+        if [ "${{inputs.extra_options}}" = "true" ]; then
+          bazel build -j ${{env.proc_num}} -c opt --copt -DHAVE_ZLIB=1 --define with_mesalink=false --define with_glog=true --define with_thrift=true //...
+        else
+          bazel build -j ${{env.proc_num}} -c opt --copt -DHAVE_ZLIB=1
+        fi        
     shell: bash

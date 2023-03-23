@@ -17,7 +17,7 @@ jobs:
     - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/init-make-config
       with:
-        options: --cc=gcc --cxx=g++
+        compiler: gcc
     - uses: ./.github/actions/compile
 
   gcc-compile-with-cmake:
@@ -48,7 +48,8 @@ jobs:
     - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/init-make-config
       with:
-        options: --cc=gcc --cxx=g++ --with-thrift --with-glog
+        compiler: gcc
+        extra_options: true
     - uses: ./.github/actions/compile
 
   gcc-compile-with-cmake-all-options:
@@ -59,7 +60,7 @@ jobs:
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: gcc
-        options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
+        extra_options: true
     - uses: ./.github/actions/compile
       with:
         directory: build
@@ -72,7 +73,7 @@ jobs:
     - uses: ./.github/actions/build-bazel
       with:
         compiler: gcc
-        options: --define with_mesalink=false --define with_glog=true --define with_thrift=true
+        extra_options: true
 
 
   clang-compile-with-make:
@@ -82,7 +83,7 @@ jobs:
     - uses: ./.github/actions/dependences/install-essential-dependences
     - uses: ./.github/actions/init-make-config
       with:
-        options: --cc=clang --cxx=clang++
+        compiler: clang
     - uses: ./.github/actions/compile
 
   clang-compile-with-cmake:
@@ -114,7 +115,8 @@ jobs:
     - uses: ./.github/actions/dependences/install-all-dependences
     - uses: ./.github/actions/init-make-config
       with:
-        options: --cc=clang --cxx=clang++ --with-thrift --with-glog
+        compiler: clang
+        options: true
     - uses: ./.github/actions/compile
 
   clang-compile-with-cmake-all-options:
@@ -125,7 +127,7 @@ jobs:
     - uses: ./.github/actions/execute-cmake
       with:
         compiler: clang
-        options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
+        extra_options: true
     - uses: ./.github/actions/compile
       with:
         directory: build
@@ -138,7 +140,7 @@ jobs:
     - uses: ./.github/actions/build-bazel
       with:
         compiler: clang
-        options: --define with_mesalink=false --define with_glog=true --define with_thrift=true
+        extra_options: true
 
 
   clang-unittest:
