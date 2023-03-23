@@ -11,6 +11,7 @@ runs:
   steps:
   - name: Echo the variables
     run: echo ${{inputs.compiler_variables}}
+    shell: bash
   - name: Set the Environment Variables
     run: | 
         for env_variable in ${{inputs.compiler_variables}}; do
