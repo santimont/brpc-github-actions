@@ -12,4 +12,4 @@ runs:
             cd ${{inputs.directory}}
           fi
           make -j ${{env.proc_num}}
-  shell: bash
+      shell: bash
