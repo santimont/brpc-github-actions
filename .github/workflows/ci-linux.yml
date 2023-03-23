@@ -107,7 +107,7 @@ jobs:
     - uses: ./.github/actions/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler: gcc
+        compiler: clang
     - name: compile
       run: |
            cd build
