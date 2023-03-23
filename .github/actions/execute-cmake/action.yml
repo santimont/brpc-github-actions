@@ -11,9 +11,9 @@ runs:
   steps:
   - name: Execute the CMake Instructions
     run: |
-        if [ "$compiler" = "clang" ]; then
+        if [ "${{inputs.compiler}}" = "clang" ]; then
           export CC=clang && export CXX=clang++
-        elif [ "$compiler" = "gcc" ]; then
+        elif [ "${{inputs.compiler}}" = "gcc" ]; then
           export CC=gcc && export CXX=g++
         fi
         mkdir build
