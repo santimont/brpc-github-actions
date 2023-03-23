@@ -14,7 +14,7 @@ runs:
     shell: bash
   - name: Set the Environment Variables
     run: | 
-        echo ${{inputs.compiler_variables}} || while read env_variable; do
+        echo "${{inputs.compiler_variables}}" || while read env_variable; do
           export $env_variable
         done
     shell: bash
