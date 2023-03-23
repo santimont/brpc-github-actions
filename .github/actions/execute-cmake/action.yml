@@ -21,4 +21,5 @@ runs:
         mkdir build
         cd build
         cmake ${{inputs.options}} ..
+    shell: bash
   
