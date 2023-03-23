@@ -9,16 +9,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: Set the Compiler
-    run: |
-        if ["$compiler" = "clang"]; then
-          echo "Using Clang"
-        elif ["$compiler" = "gcc"]; then
-          echo "Using GCC"
-        fi
-    shell: bash
   - name: Execute the CMake Instructions
     run: |
+        if [ "$compiler" = "clang" ]; then
+          export CC=clang && export CXX=clang++
+        elif [ "$compiler" = "gcc" ]; then
+          export CC=gcc && export CXX=g++
+        fi
         mkdir build
         cd build
         cmake ${{inputs.options}} ..
