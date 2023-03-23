@@ -29,9 +29,7 @@ jobs:
     - uses: ./.github/actions/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler_variables: |
-                           CC=gcc
-                           CXX=g++
+        compiler: gcc
     - name: compile
       run: |
            cd build
@@ -69,9 +67,7 @@ jobs:
     - uses: ./.github/actions/install-all-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler_variables: |
-                           CC=gcc
-                           CXX=g++
+        compiler: gcc
         options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
     - name: compile
       run: |
@@ -111,9 +107,7 @@ jobs:
     - uses: ./.github/actions/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler_variables: |
-                           CC=clang
-                           CXX=clang++
+        compiler: gcc
     - name: compile
       run: |
            cd build
@@ -151,9 +145,7 @@ jobs:
     - uses: ./.github/actions/install-all-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler_variables: |
-                           CC=clang
-                           CXX=clang++
+        compiler: clang
         options: -DWITH_MESALINK=OFF -DWITH_GLOG=ON -DWITH_THRIFT=ON
     - name: compile
       run: |

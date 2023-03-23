@@ -1,6 +1,6 @@
 inputs:
-  compiler_variables:
-    description: list of variables to indicate compiler
+  compiler:
+    description: compiler to run on (either clang or gcc)
     required: false
   options:
     description: extra options for to run cmake with
@@ -9,16 +9,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: Echo the variables
-    run: echo ${{inputs.compiler_variables}}
+  - name: Set the Compiler
+    run: |
+        if ["$compiler" = "clang"]; then
+          echo "Using Clang"
+        elif ["$compiler" = "gcc"]; then
+          echo "Using GCC"
     shell: bash
-  - name: Set the Environment Variables
-    run: | 
-        echo "${{inputs.compiler_variables}}" | while read env_variable; do
-          export $env_variable
-        done
-    shell: bash
-
   - name: Execute the CMake Instructions
     run: |
         mkdir build
