@@ -6,8 +6,10 @@ inputs:
     required: false
 runs:
   using: "composite"
-  runs: |
-    if [ -n "${{inputs.directory}}" ]; then
-          cd ${{inputs.directory}}
-    fi
-    make -j ${{env.proc_num}}
+  steps:
+    - run: |
+          if [ -n "${{inputs.directory}}" ]; then
+            cd ${{inputs.directory}}
+          fi
+          make -j ${{env.proc_num}}
+  shell: bash
