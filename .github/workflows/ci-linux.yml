@@ -29,7 +29,7 @@ jobs:
     - uses: ./.github/actions/install-essential-dependences
     - uses: ./.github/actions/execute-cmake
       with:
-        compiler_variables: 
+        compiler_variables: |
                            - CC=gcc
                            - CXX=g++
     - name: compile
